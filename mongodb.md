@@ -182,3 +182,43 @@ A small supermarket wants to store product details in MongoDB to simplify billin
 
 8.Find all products whose category is Grocery or Beverages using $in
           db.products.find({category:{$in:['grocery','beverages']}})
+
+
+
+
+
+
+
+
+
+1. Write a query to insert a user with name, email, and age into a users collection. 
+  db.users.insertMany([
+  {name:'Poomani',age:23,email:'poomanibharathi11@gamil.com'},
+  {name:'Bharathi',age:22,email:'bharathi11@gamil.com'},
+  {name:'Mani',age:17,email:'mani@gmail.com'},
+  {name:'boomi',age:20,eamil:'boomi@gmail.com'}
+   ])
+   
+  db.users.find()
+
+
+2. Write a query to find users whose age is between 20 and 30. 
+    db.users.find({
+        age:{$gte:20,$lte:30}
+    })
+
+
+3. Write a query to update a user's age to 30 using their name. 
+    db.users.updateOne(
+      {name:'boomi'},{$set:{age:30}}
+    )
+    db.users.find()
+
+
+4. Write a query to delete users whose age is less than 18. 
+    db.users.find({age:{$lt:18}})
+
+
+
+5. Write a query to count the total number of users in the collection.
+      db.users.countDocuments()
