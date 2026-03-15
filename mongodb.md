@@ -205,7 +205,7 @@ A small supermarket wants to store product details in MongoDB to simplify billin
 2. Write a query to find users whose age is between 20 and 30. 
     db.users.find({
         age:{$gte:20,$lte:30}
-    })
+     })
 
 
 3. Write a query to update a user's age to 30 using their name. 
@@ -222,3 +222,134 @@ A small supermarket wants to store product details in MongoDB to simplify billin
 
 5. Write a query to count the total number of users in the collection.
       db.users.countDocuments()
+
+
+
+
+
+
+1. Write a query to insert a new user document in a users collection.
+      db.users.insertMany([
+         {name:'Poomani',age:23,email:'poomanibharathi11@gamil.com'},
+         {name:'Bharathi',age:22,email:'bharathi11@gamil.com'},
+         {name:'Mani',age:17,email:'mani@gmail.com'},
+         {name:'boomi',age:20,eamil:'boomi@gmail.com'}
+      ])
+   
+      db.users.find()
+
+      db.users.insertOne({
+         name:'nithya',age:27,email:'nithya2@gamil.com'
+      })
+ 
+
+2. Write a query to find all users whose age is greater than 25.
+      db.users.find({
+         age:{$gt:25}
+      })
+
+
+3. Write a query to update a user's email using _id. 
+
+4. Write a query to delete a user by name. 
+5. What is the difference between SQL and MongoDB?
+
+
+
+1.group and count
+ db.users.aggregate([
+  {$group:{_id:"$age", total:{$sum:1}}}
+])
+
+2. find average age
+db.users.aggregate([
+  {$group:{_id:null, avgAge:{$avg:"$age"}}}
+])
+
+
+3. match condition
+db.users.aggregate([
+  {$match:{age:{$gt:25}}}
+])
+
+
+
+
+1. What is MongoDB?
+
+MongoDB is a NoSQL database that stores data in JSON-like documents (BSON format) instead of tables and rows.
+
+
+2. What is a Collection in MongoDB?
+
+A collection is similar to a table in SQL.
+
+It stores multiple documents.
+
+
+3. What is a Document?
+
+A document is a single record in MongoDB stored in JSON format.
+
+
+4. What is BSON?
+
+BSON (Binary JSON) is the format MongoDB uses to store documents.
+
+It supports additional data types like:
+
+Date
+
+Binary
+
+ObjectId
+
+5. What is ObjectId?
+
+ObjectId is the unique identifier automatically created for each document.
+
+Example:
+
+"_id": ObjectId("65f3a0d9f2d1a4")
+6. Difference Between SQL and MongoDB
+SQL	MongoDB
+Table	Collection
+Row	Document
+Column	Field
+Fixed schema	Flexible schema
+7. What is Index in MongoDB?
+
+An Index improves the search performance of queries.
+
+Example:
+
+db.users.createIndex({name:1})
+
+Now searching by name will be faster.
+
+8. What is Aggregation?
+
+Aggregation is used to process data and return calculated results.
+
+Example operations:
+
+sum
+
+average
+
+group
+
+filter
+
+Example:
+
+db.orders.aggregate([
+  {$group:{_id:"$product", total:{$sum:"$price"}}}
+])
+9. What is Replication?
+
+Replication means copying data across multiple servers to increase availability and reliability.
+
+10. What is Sharding?
+
+Sharding means splitting large data into multiple servers for better performance.
